@@ -13,7 +13,7 @@ class Dimitri(object):
         self.left_leg = DxlComm('/dev/ttyS4', 8)
         self.right_leg = DxlComm('/dev/ttyS5', 8)
         self.springs = DxlComm('/dev/ttyS6', 8)
-        
+
         # Feet
         self.left_foot_roll = Joint(11)
         self.right_foot_roll = Joint(12)
@@ -25,16 +25,16 @@ class Dimitri(object):
         self.right_lower_leg = Joint(16)
         self.left_lower_spring = Spring(101)
         self.right_lower_spring = Spring(102)
-	self.left_lower_leg_sea = SEA(self.left_lower_leg, self.left_lower_spring)
-	self.right_lower_leg_sea = SEA(self.right_lower_leg, self.right_lower_spring)	
+    	self.left_lower_leg_sea = SEA(self.left_lower_leg, self.left_lower_spring)
+        self.right_lower_leg_sea = SEA(self.right_lower_leg, self.right_lower_spring)
 
         # Upper leg
         self.left_upper_leg = Joint(21)
         self.right_upper_leg = Joint(22)
         self.left_upper_spring = Spring(103)
         self.right_upper_spring = Spring(104)
-	self.left_upper_leg_sea = SEA(self.left_upper_leg, self.left_upper_spring)
-	self.right_upper_leg_sea = SEA(self.right_upper_leg, self.right_upper_spring)
+        self.left_upper_leg_sea = SEA(self.left_upper_leg, self.left_upper_spring)
+        self.right_upper_leg_sea = SEA(self.right_upper_leg, self.right_upper_spring)
 
         # Thigh
         self.left_leg_roll = Joint(23)
@@ -95,4 +95,13 @@ class Dimitri(object):
         self.updateSEAs()
         self.sendGoalAngles()
 
+    def setPose(left_foot_roll=None, right_foot_roll=None, left_foot_pitch=None,
+                right_foot_pitch=None, left_lower_leg = None, right_lower_leg=None,
+                left_upper_leg=None, right_upper_leg = None, left_leg_roll=None,
+                right_leg_roll=None, left_leg_pitch=None, right_leg_pitch=None,
+                left_leg_yaw=None, right_leg_yaw=None, left_arm_roll=None, right_arm_roll=None,
+                left_arm_pitch=None, right_arm_pitch=None, left_arm_yaw=None, right_arm_yaw=None,
+                left_elbow=None, right_elbow=None, waist_roll=None, waist_pitch=None, waist_yaw=None,
+                neck_pitch=None, neck_yaw=None):
 
+        
