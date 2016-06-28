@@ -184,9 +184,7 @@ class Dimitri(object):
         self.left_leg.disableTorques()
         self.right_leg.disableTorques()
 
-    def playMotion(self, filename):
-        motion = Motion()
-        motion.read(filename)
+    def playMotion(self, motion):
         currPose = self.getPose()
         currPose[0] = 1.0
         motion.keyframes.insert(0,currPose)
@@ -194,4 +192,9 @@ class Dimitri(object):
         for frame in motion.allframes:
             self.setPose(frame)
             sleep(frame[0])
+
+    def playMotionFile(self, filename):
+        motion = Motion()
+        motion.read(filename)
+        self.playMotion(motion)
 
