@@ -154,7 +154,7 @@ class Dimitri(object):
         ''' Set a pose to the robot
         '''
         for index in pose.keys():
-            if index != 0
+            if index != 0:
                 self.joints[index].setGoalAngle(pose[index])
 
     def getPose(self):
