@@ -10,9 +10,9 @@ class Dimitri(object):
 
         # Ports
         self.trunk = DxlComm('/dev/ttyS11', 8)
-        self.leftLeg = DxlComm('/dev/ttyS4', 8)
-        self.rightLeg = DxlComm('/dev/ttyS5', 8)
-        self.seas = DxlComm('/dev/ttyS6', 8)
+        self.left_leg = DxlComm('/dev/ttyS4', 8)
+        self.right_leg = DxlComm('/dev/ttyS5', 8)
+        self.springs = DxlComm('/dev/ttyS6', 8)
         
         # Feet
         self.left_foot_roll = Joint(11)
@@ -62,4 +62,37 @@ class Dimitri(object):
         # Head
         self.neck_pitch = Joint(61)
         self.neck_yaw = Joint(62)
+
+    def sendGoalAngles(self):
+
+        ''' Send the goal angles for all
+        servo motors.
+        '''
+        self.trunk.sendGoalAngles()
+        self.left_leg.sendGoalAngles()
+        self.right_leg.sendGoalAngles()
+
+    def updateSEAs(self):
+
+        ''' Read the spring angles and compute
+        the control value for the SEAs.
+        '''
+
+        # Read all the springs
+        self.springs.readCurrAngles()
+
+        # Compute the PID control signal
+        self.left_lower_leg_sea.update()
+        self.right_lower_leg_sea.update()
+        self.left_upper_leg_sea.update()
+        self.right_upper_leg_sea.update()
+
+    def update(self):
+
+        ''' Update all robot joint commands
+        '''
+
+        self.updateSEAs()
+        self.sendGoalAngles()
+
 
