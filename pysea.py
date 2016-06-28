@@ -145,7 +145,7 @@ class SEA(object):
 
         # Transforms into value and
         # sets to the servo goalValue
-        self.joint.goalAngle = self.goalValue + c
+        self.joint.goalAngle = self.goalAngle + c
 
     def setGoalAngle(self, goalAngle):
 
