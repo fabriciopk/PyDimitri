@@ -25,12 +25,16 @@ class Dimitri(object):
         self.right_lower_leg = Joint(16)
         self.left_lower_spring = Spring(101)
         self.right_lower_spring = Spring(102)
+	self.left_lower_leg_sea = SEA(self.left_lower_leg, self.left_lower_spring)
+	self.right_lower_leg_sea = SEA(self.right_lower_leg, self.right_lower_spring)	
 
         # Upper leg
         self.left_upper_leg = Joint(21)
         self.right_upper_leg = Joint(22)
         self.left_upper_spring = Spring(103)
         self.right_upper_spring = Spring(104)
+	self.left_upper_leg_sea = SEA(self.left_upper_leg, self.left_upper_spring)
+	self.right_upper_leg_sea = SEA(self.right_upper_leg, self.right_upper_spring)
 
         # Thigh
         self.left_leg_roll = Joint(23)
