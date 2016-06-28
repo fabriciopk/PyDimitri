@@ -65,9 +65,9 @@ class Dimitri(object):
         self.joints[LEFT_LOWER_SPRING] = Spring(LEFT_LOWER_SPRING)
         self.joints[RIGHT_LOWER_SPRING] = Spring(RIGHT_LOWER_SPRING)
     	self.joints[LEFT_LOWER_LEG_SEA] = \
-                SEA(self.left_lower_leg, self.left_lower_spring)
+                SEA(self.joints[LEFT_LOWER_LEG], self.joints[LEFT_LOWER_SPRING])
         self.joints[RIGHT_LOWER_LEG_SEA] = \
-                SEA(self.right_lower_leg, self.right_lower_spring)
+                SEA(self.joints[RIGHT_LOWER_LEG], self.joints[RIGHT_LOWER_SPRING])
 
         # Upper leg
         self.joints[LEFT_UPPER_LEG] = Joint(LEFT_UPPER_LEG)
@@ -75,9 +75,9 @@ class Dimitri(object):
         self.joints[LEFT_UPPER_SPRING] = Spring(LEFT_UPPER_SPRING)
         self.joints[RIGHT_UPPER_SPRING] = Spring(RIGHT_UPPER_SPRING)
         self.joints[LEFT_UPPER_LEG_SEA] = \
-                SEA(self.left_upper_leg, self.left_upper_spring)
+                SEA(self.joints[LEFT_UPPER_LEG], self.joints[LEFT_UPPER_SPRING])
         self.joints[RIGHT_UPPER_LEG_SEA] = \
-                SEA(self.right_upper_leg, self.right_upper_spring)
+                SEA(self.joits[RIGHT_UPPER_LEG], self.joints[RIGHT_UPPER_SPRING])
 
         # Thigh
         self.joints[LEFT_LEG_ROLL] = Joint(LEFT_LEG_ROLL)
