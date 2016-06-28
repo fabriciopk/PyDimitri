@@ -1,6 +1,7 @@
 from PyDynamixel import Joint, DxlComm
 from pysea import Spring, SEA
 from math import pi
+from motion import Motion
 
 # Foot ids
 LEFT_FOOT_ROLL, RIGHT_FOOT_ROLL, \
@@ -148,12 +149,24 @@ class Dimitri(object):
         self.updateSEAs()
         self.sendGoalAngles()
 
-    def setPose(pose):
+    def setPose(self,pose):
 
         ''' Set a pose to the robot
         '''
         for index in pose.keys():
-            self.joints[index].setGoalAngle(pose[index])
+            if index != 0
+                self.joints[index].setGoalAngle(pose[index])
+
+    def getPose(self):
+
+        ''' Get the current pose
+        of the robot
+        '''
+        self.receiveAngles()
+        pose = {}
+        for joint_id in self.joints:
+            pose[joint_id] = self.joints[joint_id].getAngle()
+        return pose
 
     def enableTorques(self):
 
@@ -170,4 +183,15 @@ class Dimitri(object):
         self.trunk.disableTorques()
         self.left_leg.disableTorques()
         self.right_leg.disableTorques()
+
+    def playMotion(self, filename):
+        motion = Motion()
+        motion.read(filename)
+        currPose = self.getPose()
+        currPose[0] = 1.0
+        motion.keyframes.insert(0,currPose)
+        motion.generate()
+        for frame in motion.allframes:
+            self.setPose(frame)
+            sleep(frame[0])
 
