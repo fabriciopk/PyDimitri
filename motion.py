@@ -2,7 +2,7 @@ import pickle
 
 TIME = 0
 
-class motion(object):
+class Motion(object):
     def __init__(self):
         self.keyframes = []
         self.allframes = []
