@@ -83,6 +83,9 @@ class SEA(object):
     # PID controller variables
     error_before = 0.0
     error_sum = 0.0
+    
+    # Goal angle of the SEA
+    goalAngle = 0.0
 
     def __init__(self, joint, spring, \
             kp=1.0, ki=0.001, kd=0.0):
@@ -117,7 +120,7 @@ class SEA(object):
         angle = self.joint.goalAngle - self.spring.currAngle
 
         # Calculate the error
-        error = self.joint.goalAngle - angle
+        error = self.goalAngle - angle
 
         # Calculate the accumulated error
         # (integral)
@@ -142,8 +145,7 @@ class SEA(object):
 
         # Transforms into value and
         # sets to the servo goalValue
-        self.joint.goalValue = \
-                self.joint.goalValue + int(2048.0*c/pi)
+        self.joint.goalAngle = self.goalValue + c
 
     def setGoalAngle(self, goalAngle):
 
@@ -151,5 +153,5 @@ class SEA(object):
         which is the same as the goal angle
         of the servo (goal value will change)
         '''
-        self.joint.setGoalAngle(goalAngle)
+        self.goalAngle = goalAngle
 
