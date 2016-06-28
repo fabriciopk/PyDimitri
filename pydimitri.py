@@ -77,7 +77,7 @@ class Dimitri(object):
         self.joints[LEFT_UPPER_LEG_SEA] = \
                 SEA(self.joints[LEFT_UPPER_LEG], self.joints[LEFT_UPPER_SPRING])
         self.joints[RIGHT_UPPER_LEG_SEA] = \
-                SEA(self.joits[RIGHT_UPPER_LEG], self.joints[RIGHT_UPPER_SPRING])
+                SEA(self.joints[RIGHT_UPPER_LEG], self.joints[RIGHT_UPPER_SPRING])
 
         # Thigh
         self.joints[LEFT_LEG_ROLL] = Joint(LEFT_LEG_ROLL)
